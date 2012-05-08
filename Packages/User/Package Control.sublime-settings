@@ -1,5 +1,5 @@
 {
-	"auto_upgrade_last_run": 1336139688,
+	"auto_upgrade_last_run": 1336488431,
 	"installed_packages":
 	[
 		"Alignment",
@@ -12,6 +12,7 @@
 		"Package Control",
 		"Simple Rails Navigator",
 		"sublime-jslint",
+		"Tag",
 		"ZenCoding"
 	]
 }
