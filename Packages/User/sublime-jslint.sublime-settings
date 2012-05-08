@@ -1,0 +1,10 @@
+{
+  "jslint_options": "--predef $,document --white --sloppy --browser --nomen --plusplus",
+  "run_on_save": true,
+  "ignore_errors":
+    [
+        // "Expected an identifier and instead saw 'undefined' \(a reserved word\)"
+        // "Combine this with the previous 'var' statement.",
+        // "was used before it was defined."
+    ]
+}

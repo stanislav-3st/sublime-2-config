@@ -1,0 +1,25 @@
+[
+	{ "keys": ["alt+tab"], "command": "indent" },
+	{ "keys": ["alt+shift+tab"], "command": "unindent" },
+	{ "keys": ["super+shift+b"], "command": "expand_selection", "args": {"to": "brackets"} },
+  { "keys": ["alt+up"], "command": "select_lines", "args": {"forward": false} },
+  { "keys": ["alt+down"], "command": "select_lines", "args": {"forward": true} },
+  { "keys": ["super+shift+t"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+  { "keys": ["escape"], "command": "alternative_autocomplete", "context":
+    [
+      { "key": "num_selections", "operator": "equal", "operand": 1 },
+      { "key": "overlay_visible", "operator": "equal", "operand": false },
+      { "key": "panel_visible", "operator": "equal", "operand": false }
+    ]
+  },
+  { "keys": ["shift+escape"], "command": "alternative_autocomplete", "args": {"cycle": "previous"}, "context":
+    [
+      { "key": "num_selections", "operator": "equal", "operand": 1 },
+      { "key": "overlay_visible", "operator": "equal", "operand": false },
+      { "key": "panel_visible", "operator": "equal", "operand": false }
+    ]
+  },
+  { "keys": ["ctrl+u"], "command": "upper_case" },
+  { "keys": ["ctrl+shift+u"], "command": "lower_case" },
+  { "keys": ["super+enter"], "command": "run_macro_file", "args": {"file": "Packages/User/insert_semicolon_and_create_new_line.sublime-macro"} }
+]

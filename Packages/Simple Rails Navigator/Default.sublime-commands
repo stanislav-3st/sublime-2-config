@@ -1,0 +1,22 @@
+[
+    {
+        "caption": "Simple Rails Navigator: List models",
+        "command": "list_rails_models"
+    },
+    {
+        "caption": "Simple Rails Navigator: List controllers",
+        "command": "list_rails_controllers"
+    },
+    {
+        "caption": "Simple Rails Navigator: List views",
+        "command": "list_rails_views"
+    },
+    {
+        "caption": "Simple Rails Navigator: List javascript files",
+        "command": "list_rails_javascripts"
+    },
+    {
+        "caption": "Simple Rails Navigator: List stylesheets",
+        "command": "list_rails_stylesheets"
+    }
+]

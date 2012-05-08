@@ -1,0 +1,17 @@
+{
+	"auto_upgrade_last_run": 1336139688,
+	"installed_packages":
+	[
+		"Alignment",
+		"alternative_autocompletion",
+		"Backbone.js",
+		"Clipboard History",
+		"Drupal Snippets",
+		"Git",
+		"jQuery",
+		"Package Control",
+		"Simple Rails Navigator",
+		"sublime-jslint",
+		"ZenCoding"
+	]
+}
