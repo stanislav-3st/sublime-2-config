@@ -21,5 +21,7 @@
   },
   { "keys": ["ctrl+u"], "command": "upper_case" },
   { "keys": ["ctrl+shift+u"], "command": "lower_case" },
-  { "keys": ["super+enter"], "command": "run_macro_file", "args": {"file": "Packages/User/insert_semicolon_and_create_new_line.sublime-macro"} }
+  // { "keys": ["super+enter"], "command": "run_macro_file", "args": {"file": "Packages/User/insert_semicolon_and_create_new_line.sublime-macro"} },
+  { "keys": ["super+alt+a"], "command": "split_selection_into_lines" },
+  { "keys": ["super+alt+enter"], "command": "run_macro_file", "args": {"file": "Packages/3st/Add Termination at EOL.sublime-macro"} }
 ]
