@@ -11,5 +11,6 @@
 	"margin": 0,
 	"show_tab_close_buttons": true,
 	"tab_size": 2,
-	"translate_tabs_to_spaces": true
+	"translate_tabs_to_spaces": true,
+	"word_wrap": false
 }
