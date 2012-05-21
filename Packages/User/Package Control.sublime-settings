@@ -1,13 +1,15 @@
 {
-	"auto_upgrade_last_run": 1336488431,
+	"auto_upgrade_last_run": 1337332650,
 	"installed_packages":
 	[
 		"Alignment",
 		"alternative_autocompletion",
 		"Backbone.js",
 		"Clipboard History",
+		"Drupal Project Autocomplete",
 		"Drupal Snippets",
 		"Git",
+		"Goto Drupal API",
 		"jQuery",
 		"Package Control",
 		"Simple Rails Navigator",
