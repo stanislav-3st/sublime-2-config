@@ -1,19 +1,28 @@
 {
-	"auto_upgrade_last_run": 1337332650,
+	"auto_upgrade_last_run": 1344587248,
 	"installed_packages":
 	[
 		"Alignment",
 		"alternative_autocompletion",
 		"Backbone.js",
 		"Clipboard History",
+		"Color Highlighter",
 		"Drupal Project Autocomplete",
 		"Drupal Snippets",
+		"drush_cc",
 		"Git",
 		"Goto Drupal API",
+		"IndentGuides",
 		"jQuery",
 		"Package Control",
+		"Phpcs",
+		"Prefixr",
 		"Simple Rails Navigator",
 		"sublime-jslint",
+		"SublimeBlockCursor",
+		"Tag",
+		"Whitespaces",
+		"Xdebug",
 		"ZenCoding"
 	]
 }

@@ -2,18 +2,82 @@
 
 Simple plugin for navigating Ruby on Rails applications.
 
-This plugin provides commands for listing models, controllers, views,
-javascript files, or stylesheets in a quick panel for easy selection.
+This plugin provides commands for listing models, controllers, views, helpers,
+fixtures, tests/specs, javascript files, or stylesheets in a quick panel for
+easy selection.
 
 Related files are located at the top of the list so that they can be selected
 simply by pressing Enter. For instance, if the active view is a Rails model
 and you request a list of controllers, the controller corresponding to the
 model will be listed at the top, provided that you follow normal Rails
 resource conventions with the controller name containing the pluralized
-version of the model name (e.g. post.rb and posts_controller.rb).
+version of the model name (e.g. `post.rb` and `posts_controller.rb`).
 
-The plugin was inspired by Luqman Amjad's Rails Related Files plugin. These
-plugins have complementary functionality and can be used together.
+The same goes for tests or specs (in the example case, the test file should be
+called `test/unit/post_test.rb` or `spec/models/post_spec.rb`). If the
+application contains a `spec` directory, the plugin will search for specs and
+ignore the `test` directory; otherwise the `test` directory will be used.
+
+The following table shows which related files will be put at the top of the list:
+
+<table>
+  <thead>
+    <tr>
+      <td>Active file</td>
+      <td>Listing these file types will show related files at the top of the list</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>model</td>
+      <td>controller; fixture; model unit test/model spec</td>
+    </tr>
+    <tr>
+      <td>controller</td>
+      <td>model; views; helper; functional test/controller spec</td>
+    </tr>
+    <tr>
+      <td>view</td>
+      <td>controller; functional test/view spec</td>
+    </tr>
+    <tr>
+      <td>helper</td>
+      <td>controller; helper unit test/helper spec</td>
+    </tr>
+    <tr>
+      <td>fixture</td>
+      <td>model; model unit test/model spec; functional test/controller spec</td>
+    </tr>
+    <tr>
+      <td>model unit test/model spec</td>
+      <td>model; fixture</td>
+    </tr>
+    <tr>
+      <td>functional test</td>
+      <td>controller; views; fixture</td>
+    </tr>
+    <tr>
+      <td>controller spec</td>
+      <td>controller; fixture</td>
+    </tr>
+    <tr>
+      <td>view spec</td>
+      <td>view</td>
+    </tr>
+    <tr>
+      <td>helper unit test/helper spec</td>
+      <td>helper</td>
+    </tr>
+    <tr>
+      <td>routes.rb</td>
+      <td>route specs</td>
+    </tr>
+  </tbody>
+</table>
+
+This plugin was inspired by Luqman Amjad's Rails Related Files plugin. The
+plugins have complementary functionality (Amjad's plugin shows related files
+of all types in a single list), and they can be used together.
 
 ## Installation
 
@@ -46,6 +110,9 @@ in the console, try out the key combinations and see if anything is logged.
     { "keys": ["super+ctrl+m"], "command": "list_rails_models" },
     { "keys": ["super+ctrl+c"], "command": "list_rails_controllers" },
     { "keys": ["super+ctrl+v"], "command": "list_rails_views" },
+    { "keys": ["super+ctrl+h"], "command": "list_rails_helpers" },
+    { "keys": ["super+ctrl+x"], "command": "list_rails_fixtures" },
+    { "keys": ["super+ctrl+t"], "command": "list_rails_tests" },
     { "keys": ["super+ctrl+i"], "command": "list_rails_javascripts" },
     { "keys": ["super+ctrl+y"], "command": "list_rails_stylesheets" }
 
@@ -55,6 +122,9 @@ you can restrict the key bindings to command mode like this:
     { "keys": [" ", "m"], "command": "list_rails_models", "context": [{"key": "setting.command_mode"}] },
     { "keys": [" ", "c"], "command": "list_rails_controllers", "context": [{"key": "setting.command_mode"}] },
     { "keys": [" ", "v"], "command": "list_rails_views", "context": [{"key": "setting.command_mode"}] },
+    { "keys": [" ", "h"], "command": "list_rails_helpers", "context": [{"key": "setting.command_mode"}] },
+    { "keys": [" ", "x"], "command": "list_rails_fixtures", "context": [{"key": "setting.command_mode"}] },
+    { "keys": [" ", "t"], "command": "list_rails_tests", "context": [{"key": "setting.command_mode"}] },
     { "keys": [" ", "i"], "command": "list_rails_javascripts", "context": [{"key": "setting.command_mode"}] },
     { "keys": [" ", "y"], "command": "list_rails_stylesheets", "context": [{"key": "setting.command_mode"}] }
 
@@ -82,7 +152,8 @@ project file under a top-level "settings" key. An example of the latter:
 
 ## Credits
 
-- Inspiration from Luqman Amjad's Rails Related Files plugin for ST2.
+- Inspiration from Luqman Amjad's Rails Related Files plugin for ST2 and from Tim Pope's rails.vim plugin for Vim
+(which contains sooo much more functionality than this one, of course :-)
 - Python version of the Rails inflector: <https://bitbucket.org/ixmatus/inflector>
 - Contains a modified version of a small code snippet from the Git package for ST2.
 
