@@ -1,9 +1,11 @@
 {
-	"auto_upgrade_last_run": 1344587248,
+	"auto_upgrade_last_run": 1346237335,
 	"installed_packages":
 	[
 		"Alignment",
+		"All Autocomplete",
 		"alternative_autocompletion",
+		"Auto Semi-Colon",
 		"Backbone.js",
 		"Clipboard History",
 		"Color Highlighter",
@@ -15,11 +17,12 @@
 		"IndentGuides",
 		"jQuery",
 		"Package Control",
-		"Phpcs",
 		"Prefixr",
 		"Simple Rails Navigator",
 		"sublime-jslint",
 		"SublimeBlockCursor",
+		"SublimeCodeIntel",
+		"SublimeLinter",
 		"Tag",
 		"Whitespaces",
 		"Xdebug",
