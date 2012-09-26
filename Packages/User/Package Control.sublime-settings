@@ -1,5 +1,5 @@
 {
-	"auto_upgrade_last_run": 1346237335,
+	"auto_upgrade_last_run": 1348647916,
 	"installed_packages":
 	[
 		"Alignment",
@@ -16,6 +16,7 @@
 		"Goto Drupal API",
 		"IndentGuides",
 		"jQuery",
+		"LESS",
 		"Package Control",
 		"Prefixr",
 		"Simple Rails Navigator",
@@ -24,6 +25,7 @@
 		"SublimeCodeIntel",
 		"SublimeLinter",
 		"Tag",
+		"Theme - Soda",
 		"Whitespaces",
 		"Xdebug",
 		"ZenCoding"

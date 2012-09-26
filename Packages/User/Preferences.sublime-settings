@@ -1,28 +1,22 @@
 {
 	"caret_style": "wide",
-	"color_scheme": "Packages/Django (Smoothy).tmTheme",
+	"color_scheme": "Packages/Oceanic.tmTheme",
 	"color_scope_name": "text",
-	"font_face": "Monaco",
-	"font_size": 13.0,
-	"highlight_line": true,
-	"ignored_packages":
-	[
-		"Vintage",
-		"ZenCoding",
-		"IndentGuides",
-		"Drupal Project Autocomplete",
-		"alternative_autocompletion",
-		"SublimeCodeIntel"
-	],
+	"font_face": "SourceCodePro-Light",
+	"font_size": 14.0,
+	"highlight_line": true,	
 	"indent_guide_options":
 	[
 		"draw_normal",
 		"draw_active",
 		"draw_stack"
 	],
+	"line_padding_top": 1,
+	"line_padding_bottom": 1,
 	"margin": 0,
-	"show_tab_close_buttons": false,
+	"soda_classic_tabs": true,
 	"tab_size": 2,
+	"theme": "Soda Light.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"word_wrap": false
 }
