@@ -1,10 +1,11 @@
 {
-	"auto_upgrade_last_run": 1348647916,
+	"auto_upgrade_last_run": 1353512138,
 	"installed_packages":
 	[
 		"Alignment",
 		"All Autocomplete",
 		"alternative_autocompletion",
+		"ApacheConf.tmLanguage",
 		"Auto Semi-Colon",
 		"Backbone.js",
 		"Clipboard History",
@@ -12,10 +13,11 @@
 		"Drupal Project Autocomplete",
 		"Drupal Snippets",
 		"drush_cc",
-		"Git",
 		"Goto Drupal API",
 		"IndentGuides",
+		"INI",
 		"jQuery",
+		"JSHint",
 		"LESS",
 		"Package Control",
 		"Prefixr",

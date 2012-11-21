@@ -4,15 +4,21 @@
 	"color_scope_name": "text",
 	"font_face": "SourceCodePro-Light",
 	"font_size": 14.0,
-	"highlight_line": true,	
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage",
+		"SublimeLinter",
+		"sublime-jslint"
+	],
 	"indent_guide_options":
 	[
 		"draw_normal",
 		"draw_active",
 		"draw_stack"
 	],
-	"line_padding_top": 1,
 	"line_padding_bottom": 1,
+	"line_padding_top": 1,
 	"margin": 0,
 	"soda_classic_tabs": true,
 	"tab_size": 2,
