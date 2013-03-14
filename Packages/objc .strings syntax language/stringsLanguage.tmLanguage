@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>strings</string>
+	</array>
+	<key>name</key>
+	<string>Objective-C Strings</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.strings</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>string.strings</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Main regex for language markup</string>
+			<key>match</key>
+			<string>^\s*"(.*)"\s*(=)\s*"(.*)"\s*;</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>comment.strings</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>in-line comment with #</string>
+			<key>match</key>
+			<string>^(#.*)</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>comment.strings</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>in-line comment with //</string>
+			<key>match</key>
+			<string>^(//.*)$</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\s*/\*.*)$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>comment.strings</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>multi-line comments</string>
+			<key>end</key>
+			<string>^(\s*\*/\s*)$</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>comment.strings</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>.</string>
+					<key>name</key>
+					<string>comment.strings</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.objc.strings</string>
+	<key>uuid</key>
+	<string>e92005a7-51a8-4024-be9d-ba5026f35d3a</string>
+</dict>
+</plist>

@@ -1,0 +1,48 @@
+{ "name": "Objective-C Strings",
+  "scopeName": "source.objc.strings",
+  "fileTypes": ["strings"],
+  "patterns": [
+  	{
+      "comment" : "Main regex for language markup",
+  		"match" : "^\\s*\"(.*)\"\\s*(=)\\s*\"(.*)\"\\s*;",
+  		"captures": {
+      		"1": { "name": "string.strings" },
+      		"3": { "name": "string.strings" }
+   		}
+  	},
+  	{
+      "comment" : "in-line comment with #",
+  		"match" : "^(#.*)",
+  		"captures": {
+      		"1": { "name": "comment.strings" }
+   		}
+  	},
+  	{
+      "comment" : "in-line comment with //",
+  		"match" : "^(//.*)$",
+  		"captures": {
+      		"1": { "name": "comment.strings" }
+   		}
+  	},
+    {
+      "comment" : "multi-line comments",
+      "begin" : "^(\\s*/\\*.*)$",
+      "beginCaptures": {
+        "1": { "name": "comment.strings" }
+      },
+      "patterns": [
+        { "include": "$self" },
+        {  
+          "name": "comment.strings",
+          "match": "."
+        }
+      ],
+      "end" : "^(\\s*\\*/\\s*)$",
+      "endCaptures": {
+        "1": { "name": "comment.strings" }
+      }
+    }
+
+  ],
+  "uuid": "e92005a7-51a8-4024-be9d-ba5026f35d3a"
+}

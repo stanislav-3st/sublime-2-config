@@ -3,13 +3,10 @@
 	"color_scheme": "Packages/Oceanic.tmTheme",
 	"color_scope_name": "text",
 	"font_face": "SourceCodePro-Light",
-	"font_size": 14.0,
+	"font_size": 12.0,
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Vintage",
-		"SublimeLinter",
-		"sublime-jslint"
 	],
 	"indent_guide_options":
 	[
