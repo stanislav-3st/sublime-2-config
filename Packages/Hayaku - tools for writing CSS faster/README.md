@@ -80,7 +80,7 @@ This is the first basic thing: Hayaku don't have any premade snippets for CSS, i
 
 So, writing `w`, `wi` or `wid` would give you `width`. And don't forget about the fuzzy part: `wdt` and `wdth` would work too.
 
-Sometimes you would guess that some abbreviations must become other things, but in most cases all the variants have some logic beyound. `b` could be expanded to `background` or `border`, but expanded to `bottom` instead — it's becouse all the “sides” values are abbreviated to just one letter: **l**eft,  **r**eft,  **t**op, so  **b**ottom goes by this path.
+Sometimes you would guess that some abbreviations must become other things, but in most cases all the variants have some logic beyound. `b` could be expanded to `background` or `border`, but expanded to `bottom` instead — it's becouse all the “sides” values are abbreviated to just one letter: **l**eft,  **r**ight,  **t**op, so  **b**ottom goes by this path.
 
 However, if you feel that some abbreviation just need to be not that is expands to, feel free to [fill up an issue](https://github.com/hayaku/hayaku/issues/new).
 
@@ -342,7 +342,7 @@ However, if you'd want to expand such properties left aligned, set
 
 ### Using only specific prefixes
 
-This is not something that you would use often, but if you'd need, you could use only prefixes for browsers you want. There are two settigns for this:
+This is not something that you would use often, but if you'd need, you could use only prefixes for browsers you want. There are two settings for this:
 
 ``` JSON
 {
@@ -393,7 +393,7 @@ That would make `cF` to be expanded into `color: #FFFFFF`.
 
 “Hey! I don't need to write CSS faster — I use Preprocessors!” you could say. But, well, you would still need to write all those extra symbols, so abbreviations would fit preprocessors well. And as Hayaku is highly customizable, you could use it with any preprocessor: Sass, Less, Stylus etc.
 
-Right now only basic things are available, but in feature you could expand different mixins and functions too, so just wait for it.
+Right now only basic things are available, but in the future you could expand different mixins and functions too, so just wait for it.
 
 - - -
 

@@ -3,6 +3,7 @@
 	"indent_with_tabs": false,
 	"preserve_newlines": true,
 	"max_preserve_newlines": 4,
+	"space_in_paren": false,
 	"jslint_happy": false,
 	"brace_style": "collapse",
 	"keep_array_indentation": false,
@@ -12,6 +13,5 @@
 	"break_chained_methods": false,
 
 	// jsformat options
-	"ensure_newline_at_eof_on_save": false,
 	"format_on_save": false
 }
