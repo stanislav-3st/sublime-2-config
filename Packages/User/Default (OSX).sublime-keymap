@@ -27,5 +27,6 @@
   { "keys": ["super+shift+a"], "command": "goto_drupalapi" },
   { "keys": ["super+alt+c"], "command": "drushcc" },
   { "keys": ["alt+shift+tab"], "command": "reindent"},
-  { "keys": ["alt+shift+."], "command": "erb" }
+  { "keys": ["alt+shift+."], "command": "erb" },
+  { "keys": ["super+alt+ctrl+t"], "command": "open_terminal" }
 ]

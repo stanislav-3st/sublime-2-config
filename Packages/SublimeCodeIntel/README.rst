@@ -1,9 +1,9 @@
 SublimeCodeIntel
 ================
 
-Code intelligence plugin ported from Open Komodo Editor to the `Sublime Text 2 <http://sublimetext.com/dev>`_
+Code intelligence plugin ported from `Open Komodo Editor <http://www.openkomodo.com/>`_ to `Sublime Text 2 <http://www.sublimetext.com/2>`_.
 
-Supports all the languages Komodo Editor supports for Code Intelligence (CIX, CodeIntel2)::
+Supports all the languages Komodo Editor supports for Code Intelligence (CIX, CodeIntel2):
 
     PHP, Python, RHTML, JavaScript, Smarty, Mason, Node.js, XBL, Tcl, HTML, HTML5, TemplateToolkit, XUL, Django, Perl, Ruby, Python3.
 
@@ -26,22 +26,22 @@ Installing
 
 Once you install Package Control, restart ST2 and bring up the Command Palette (``Command+Shift+P`` on OS X, ``Control+Shift+P`` on Linux/Windows). Select "Package Control: Install Package", wait while Package Control fetches the latest package list, then select SublimeCodeIntel when the list appears. The advantage of using this method is that Package Control will automatically keep SublimeCodeIntel up to date with the latest version.
 
-**Without Git:** Download the latest source from `GitHub <http://github.com/Kronuz/SublimeCodeIntel>`_ and copy the whole directory into the Packages directory.
+**Without Git:** Download the latest source from `GitHub <http://github.com/SublimeCodeIntel/SublimeCodeIntel>`_ and copy the whole directory into the Packages directory.
 
 **With Git:** Clone the repository in your Sublime Text 2 Packages directory, located somewhere in user's "Home" directory::
 
-    git clone git://github.com/Kronuz/SublimeCodeIntel.git
+    git clone git://github.com/SublimeCodeIntel/SublimeCodeIntel.git
 
 
 The "Packages" packages directory is located at:
 
 * OS X::
 
-    ~/Library/Application Support/Sublime Text 2/Packages/
+    ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
 
 * Linux::
 
-    ~/.Sublime Text 2/Packages/
+    ~/.Sublime\ Text\ 2/Packages/
 
 * Windows::
 
@@ -51,13 +51,15 @@ The "Packages" packages directory is located at:
 Using
 -----
 
-* Sublime CodeIntel will allow you to jump around symbol definitions even across files with just a click. To "Jump to Symbol Declaration" use ``super+f3`` or ``alt+click`` over the symbol.
+* Sublime CodeIntel will allow you to jump around symbol definitions even across files with just a click. To "Jump to Symbol Declaration" use ``super+f3`` or ``alt+click`` over the symbol. To go back to previous jump point use ``cmd+alt+ctrl+left``.
 
-* Start typing code as usual, autocomplete will pop up whenever it's available. To trigger manual codeintel autocompletion use ``super+j``.
+* Start typing code as usual, autocomplete will pop up whenever it's available. To trigger manual codeintel autocompletion use ``shift+ctrl+space``.
 
 Don't despair! The first time you use it it needs to build some indexes and it can take more than a few seconds (around six in my configuration).
 
 It just works!
+
+If you find the behaviour somewhat unexpected or the autocomplete incomplete, please reset the plugin from sublimetext command palette before trying anything else.
 
 
 Configuring
@@ -124,6 +126,7 @@ In your terminal, go to your ``Packages/SublimeCodeIntel/src`` folder, then
 simply run::
 
     $ ./build.sh
+
 
 
 What's New

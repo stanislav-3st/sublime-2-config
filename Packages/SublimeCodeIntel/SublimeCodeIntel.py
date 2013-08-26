@@ -67,10 +67,18 @@ Configuration files (`~/.codeintel/config' or `project_root/.codeintel/config').
         }
     }
 """
-import os, sys, stat, time, datetime, collections
-import sublime_plugin, sublime
+import os
+import re
+import sys
+import stat
+import time
+import datetime
+import collections
+import sublime
+import sublime_plugin
 import threading
 import logging
+
 from cStringIO import StringIO
 
 CODEINTEL_HOME_DIR = os.path.expanduser(os.path.join('~', '.codeintel'))
@@ -94,6 +102,7 @@ QUEUE = {}  # views waiting to be processed by codeintel
 class NullHandler(logging.Handler):
     def emit(self, record):
         pass
+
 codeintel_hdlr = NullHandler()
 codeintel_hdlr.setFormatter(logging.Formatter("%(name)s: %(levelname)s: %(message)s"))
 stderr_hdlr = logging.StreamHandler(sys.stderr)
@@ -106,6 +115,7 @@ codeintel_log.handlers = [codeintel_hdlr]
 log.handlers = [stderr_hdlr]
 codeintel_log.setLevel(logging.INFO)  # INFO
 logging.getLogger("codeintel.db").setLevel(logging.WARNING)  # WARNING/INFO
+
 for lang in ('css', 'django', 'html', 'html5', 'javascript', 'mason', 'nodejs',
              'perl', 'php', 'python', 'python3', 'rhtml', 'ruby', 'smarty',
              'tcl', 'templatetoolkit', 'xbl', 'xml', 'xslt', 'xul'):
@@ -120,6 +130,7 @@ cpln_fillup_chars = {
     'CSS': " '\";},/",
     'JavaScript': "~`!#%^&*()-=+{}[]|\\;:'\",.<>?/",
 }
+
 cpln_stop_chars = {
     'Ruby': "~`@#$%^&*(+}[]|\\;:,<>/ '\".",
     'Python': "~`!@#$%^&*()-=+{}[]|\\;:'\",.<>?/ ",
@@ -151,7 +162,8 @@ def pos2bytes(content, pos):
 
 def calltip(view, type, msg=None, timeout=None, delay=0, id='CodeIntel', logger=None):
     if timeout is None:
-        timeout = {'error': 3000, 'warning': 5000, 'info': 10000, 'event': 10000, 'tip': 15000}.get(type, 3000)
+        timeout = {'error': 3000, 'warning': 5000, 'info': 10000,
+                    'event': 10000, 'tip': 15000}.get(type, 3000)
 
     if msg is None:
         msg, type = type, 'debug'
@@ -273,8 +285,9 @@ def autocomplete(view, timeout, busy_timeout, preemptive=False, args=[], kwargs=
         except IndexError:
             next = ''
         if pos and content and content[view.line(sel).begin():pos].strip() and not next.isalnum() and next != '_':
-            #TODO: For the sentinel to work, we need to send a prefix to the completions... but no show_completions() currently available
-            #pos = sentinel[id] if sentinel[id] is not None else view.sel()[0].end()
+            # TODO: For the sentinel to work, we need to send a prefix to the completions... 
+            # but no show_completions() currently available.
+            # pos = sentinel[id] if sentinel[id] is not None else view.sel()[0].end()
 
             def _trigger(cplns, calltips):
                 if cplns is not None or calltips is not None:
@@ -282,8 +295,8 @@ def autocomplete(view, timeout, busy_timeout, preemptive=False, args=[], kwargs=
                 if cplns:
                     # Show autocompletions:
                     _completions = sorted(
-                        [('%s  (%s)' % (name, type), name) for type, name in cplns],
-                        cmp=lambda a, b: a[1] < b[1] if a[1].startswith('_') and b[1].startswith('_') else False if a[1].startswith('_') else True if b[1].startswith('_') else a[1] < b[1]
+                        [('%s  (%s)' % (name, type), name + ('(${1})' if type == 'function' else '')) for type, name in cplns],
+                        cmp=lambda a, b: cmp(a[1], b[1]) if a[1].startswith('_') == b[1].startswith('_') else 1 if a[1].startswith('_') else -1
                     )
                     if _completions:
                         completions[id] = _completions
@@ -291,10 +304,41 @@ def autocomplete(view, timeout, busy_timeout, preemptive=False, args=[], kwargs=
                             'disable_auto_insert': True,
                             'api_completions_only': True,
                             'next_completion_if_showing': False,
+                            'auto_complete_commit_on_tab': True,
                         })
                 elif calltips is not None:
                     # Trigger a tooltip
                     calltip(view, 'tip', calltips[0])
+
+                    if content[sel.a - 1] == '(' and content[sel.a] == ')':
+                        rex = re.compile("\(([^\[\(\)]*)")
+                        m = rex.search(calltips[0])
+
+                        if m is None:
+                            return
+
+                        params = m.group(1).split(',')
+
+                        snippet = []
+                        i = 1
+                        for p in params:
+                            p = p.strip()
+                            if p.find('=') != -1 or p.find('<list>') != -1:
+                                continue
+                            if p.find(' ') != -1:
+                                p = p.split(' ')[1]
+
+                            var = p.replace('$', '').strip()
+                            snippet.append('${' + str(i) + ':' + var + '}')
+                            i += 1
+
+                        if i == 1:
+                            return
+
+                        view.run_command('insert_snippet', {
+                            'contents': ', '.join(snippet)
+                        })
+
             sentinel[id] = None
             codeintel(view, path, content, lang, pos, ('cplns', 'calltips'), _trigger)
     # If it's a fill char, queue using lower values and preemptive behavior
@@ -531,9 +575,12 @@ def codeintel_scan(view, path, content, lang, callback=None, pos=None, forms=Non
                 project_base_dir = None
                 if path:
                     # Try to find a suitable project directory (or best guess):
-                    for folder in ['.codeintel', '.git', '.hg', 'trunk']:
+                    for folder in ['.codeintel', '.git', '.hg', '.svn', 'trunk']:
                         project_dir = find_folder(path, folder)
-                        if project_dir and (folder != '.codeintel' or not os.path.exists(os.path.join(project_dir, 'db'))):
+                        if project_dir:
+                            if folder == '.codeintel':
+                                if project_dir == CODEINTEL_HOME_DIR or os.path.exists(os.path.join(project_dir, 'db')):
+                                    continue
                             if folder.startswith('.'):
                                 project_base_dir = os.path.abspath(os.path.join(project_dir, '..'))
                             else:
@@ -556,6 +603,7 @@ def codeintel_scan(view, path, content, lang, callback=None, pos=None, forms=Non
             for catalog in mgr.db.get_catalogs_zone().avail_catalogs():
                 if catalog['lang'] == lang:
                     catalogs.append(catalog['name'])
+
             config = {
                 "codeintel_selected_catalogs": catalogs,
                 "codeintel_max_recursive_dir_depth": 10,
@@ -601,7 +649,7 @@ def codeintel_scan(view, path, content, lang, callback=None, pos=None, forms=Non
                 msgs.append(('info', "\n%s\n%s" % (msg, "-" * len(msg))))
 
             if catalogs:
-                msgs.append(('info', "New env with atalogs for '%s': %s" % (lang, ', '.join(catalogs) or None)))
+                msgs.append(('info', "New env with catalogs for '%s': %s" % (lang, ', '.join(catalogs) or None)))
 
             buf = mgr.buf_from_content(content.encode('utf-8'), lang, env, path or "<Unsaved>", 'utf-8')
 
@@ -647,7 +695,7 @@ def codeintel(view, path, content, lang, pos, forms, callback=None, timeout=7000
             return [None] * len(forms)
 
         try:
-            trg = getattr(buf, 'trg_from_pos', lambda p: None)(pos2bytes(content, pos))
+            trg = getattr(buf, 'preceding_trg_from_pos', lambda p: None)(pos2bytes(content, pos), pos2bytes(content, pos))
             defn_trg = getattr(buf, 'defn_trg_from_pos', lambda p: None)(pos2bytes(content, pos))
         except (CodeIntelError):
             codeintel_log.exception("Exception! %s:%s (%s)" % (path or '<Unsaved>', pos, lang))
@@ -824,7 +872,7 @@ class PythonCodeIntel(sublime_plugin.EventListener):
             #     live = live and sentinel[id] is not None
 
             if live:
-                if not hasattr(view, 'command_history') or view.command_history(0)[0] == 'insert':
+                if not hasattr(view, 'command_history') or (view.command_history(0)[0] == 'insert' and view.command_history(0)[1]['characters'] != ',') or (view.command_history(1)[0] == 'insert' and view.command_history(0)[0] == 'insert_snippet' and view.command_history(0)[1]['contents'] == '($0)') or (text == '(' and view.command_history(0)[0] == 'commit_completion'):
                     autocomplete(view, 0 if is_fill_char else 200, 50 if is_fill_char else 600, is_fill_char, args=[path, lang])
                 else:
                     view.run_command('hide_auto_complete')

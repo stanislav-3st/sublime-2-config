@@ -1,0 +1,33 @@
+{
+    // Show scope in status bar
+    "show_statusbar": false,
+
+    // Show scope in auto-popup panel
+    "show_panel": true,
+
+    // Copy scopes to clipboard
+    "clipboard": false,
+
+    // Allow multi-select scope hunting
+    "multiselect": true,
+
+    // Show scope extent in line/char format
+    "extent_line_char": false,
+
+    "console_log": false,
+
+    // Show scope extent in point format
+    "extent_points": false,
+
+    // Highlight scope extent?
+    "highlight_extent": true,
+
+    // Scope to use for the color
+    "highlight_scope": "invalid",
+
+    // Highlight style (underline|solid|outline)
+    "highlight_style": "underline",
+
+    // Max region to size to highlight
+    "highlight_max_size": 100
+}
