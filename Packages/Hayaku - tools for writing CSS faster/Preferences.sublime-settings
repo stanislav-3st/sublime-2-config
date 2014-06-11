@@ -1,6 +1,7 @@
 {
+    // Disabling default autocompletions, see https://github.com/hayaku/hayaku#note-on-autocomplete
     "disable_tab_abbreviations_for_scopes": "css,less,sass,scss,stylus",
-    "auto_complete_selector": "source -comment -source.css -source.sass -source.scss -source.stylus",
+    "auto_complete_selector": "source -comment -source.css -source.sass -source.scss -source.less, meta.tag -punctuation.definition.tag.begin",
 
 
 // Unused settings, work in progress

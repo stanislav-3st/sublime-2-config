@@ -2,32 +2,32 @@
 	"caret_style": "wide",
 	"color_scheme": "Packages/Oceanic.tmTheme",
 	"color_scope_name": "text",
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".sass-cache"
+	],
 	"font_face": "SourceCodePro-Light",
 	"font_size": 11.0,
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Xdebug",
-		"LESS",
-		"objc .strings syntax language",
-		"ScopeHunter",
-		"Terminal",
-		"Whitespaces",
-		"WordHighlight",
-		"SublimeLinter",
-		"Syntax Highlighting for Sass",
+		"Rails Related Files",		
+		"Color Highlighter",
 		"sublime-jslint",
-		"Rails Partial",
-		"Simple Rails Navigator",
-		"Ruby on Rails snippets",
-		"Sass",
-		"SideBarGit",
-		"JsFormat",
-		"Super Calculator",
-		"Rails Related Files",
-		"SublimeCodeIntel",
-		"JSHint",
-		"Todo"
+		"ERB Snippets",		
+		"objc .strings syntax language",
+		"ShowEncoding",
+		"Markdown Preview",
+		"List stylesheet variables",
+		"Todo",
+		"WordHighlight",
+		"INI",
+		"Git",
+		"Drupal Project Autocomplete"
 	],
 	"indent_guide_options":
 	[
@@ -38,9 +38,9 @@
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
 	"margin": 0,
-	"soda_classic_tabs": true,
+	"soda_classic_tabs": false,
 	"tab_size": 2,
-	"theme": "Soda Light.sublime-theme",
+	"theme": "Spacegray.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"word_wrap": false
 }

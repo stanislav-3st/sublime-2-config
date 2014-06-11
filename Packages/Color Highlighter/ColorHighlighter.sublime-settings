@@ -1,4 +1,6 @@
 {
-	"hex_values" : false,
-	"0x_hex_values" : false
+    "enabled": true,
+    "style": "default",
+    "highlight_all": false,
+    "ha_style": "default"
 }

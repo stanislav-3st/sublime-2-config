@@ -49,6 +49,7 @@ class GitBranchCommand(GitWindowCommand):
         self.run_command(['git'] + self.command_to_run_after_branch + [picked_branch], self.update_status)
 
     def update_status(self, result):
+        self.panel(result)
         global branch
         branch = ""
         for view in self.window.views():
@@ -74,6 +75,11 @@ class GitNewBranchCommand(GitWindowCommand):
             self.panel("No branch name provided")
             return
         self.run_command(['git', 'checkout', '-b', branchname])
+
+
+class GitTrackRemoteBranchCommand(GitBranchCommand):
+	command_to_run_after_branch = ['checkout', '-t']
+	extra_flags = ['-r']
 
 
 class GitNewTagCommand(GitWindowCommand):
@@ -123,6 +129,11 @@ class GitFetchCommand(GitWindowCommand):
 class GitPullCommand(GitWindowCommand):
     def run(self):
         self.run_command(['git', 'pull'], callback=self.panel)
+
+
+class GitPullRebaseCommand(GitWindowCommand):
+    def run(self):
+        self.run_command(['git', 'pull', '--rebase'], callback=self.panel)
 
 
 class GitPullCurrentBranchCommand(GitWindowCommand):
